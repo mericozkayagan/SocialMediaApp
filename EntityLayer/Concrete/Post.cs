@@ -17,5 +17,8 @@ namespace EntityLayer.Concrete
         public User User { get; set; }
         public int CategoryId { get; set; }
         public Category Category { get; set; }
+        public DateTime CreateDate { get; set; }
+        public DateTime LastUpdatedDate { get; set; }
+        public bool PostStatus { get; set; }
     }
 }
