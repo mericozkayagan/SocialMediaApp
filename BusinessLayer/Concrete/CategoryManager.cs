@@ -11,7 +11,7 @@ namespace BusinessLayer.Concrete
 {
     public class CategoryManager : ICategoryService
     {
-        ICategoryDal _categoryDal;
+        ICategoryDal _categoryDal;       
 
         public CategoryManager(ICategoryDal categoryDal)
         {
@@ -31,7 +31,7 @@ namespace BusinessLayer.Concrete
         public Category GetById(int id)
         {
             return _categoryDal.GetById(id);
-        }
+        }        
 
         public List<Category> GetList()
         {

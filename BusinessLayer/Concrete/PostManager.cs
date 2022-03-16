@@ -38,6 +38,16 @@ namespace BusinessLayer.Concrete
             return _postDal.GetListAll();
         }
 
+        public List<Post> GetPostListByUserId(int id)
+        {
+            return _postDal.GetPostListByUserId(id);
+        }
+
+        public List<Post> GetPostListWithUser()
+        {
+            return _postDal.GetPostListWithUser();
+        }
+
         public void Update(Post t)
         {
             _postDal.Update(t);

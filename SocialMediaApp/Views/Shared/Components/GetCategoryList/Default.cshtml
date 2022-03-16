@@ -1,0 +1,13 @@
+﻿@using EntityLayer.Concrete
+@model List<Category>
+<div class="card" style="width: 20rem;">
+    <div class="card-header">
+        Kategoriler
+    </div>
+    <ul class="list-group list-group-flush">
+        @foreach (var item in Model)
+        {
+            <li class="list-group-item">@item.CategoryName <span class="badge-primary ">@item.CategoryCount</span></li>
+        }
+    </ul>
+</div>

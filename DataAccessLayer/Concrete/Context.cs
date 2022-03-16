@@ -10,12 +10,17 @@ namespace DataAccessLayer.Concrete
 {
    public class Context:DbContext
     {
-        public Context(DbContextOptions<Context> options) : base(options) { }        
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            optionsBuilder.UseSqlServer("server=DESKTOP-V0GJHRO;database=SocialMediaDb;integrated security=true;");
+        }
 
         public DbSet<User> Users { get; set; }
         public DbSet<Category> Categories { get; set; }        
         public DbSet<Message> Messages { get; set; }        
         public DbSet<Admin> Admins { get; set; }
         public DbSet<Post> Posts { get; set; }
+        public DbSet<Like> Likes { get; set; }
+        public DbSet<Comment> Comments { get; set; }
     }
 }

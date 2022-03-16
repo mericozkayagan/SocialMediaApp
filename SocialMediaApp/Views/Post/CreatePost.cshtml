@@ -1,0 +1,34 @@
+﻿@model EntityLayer.Concrete.Post
+@{
+    ViewData["Title"] = "CreatePost";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+@using (Html.BeginForm("CreatePost", "Post", FormMethod.Post))
+{
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">Yeni post oluştur</h5>
+            <hr />
+            @Html.Label("Blog başlığı")
+            @Html.TextBoxFor(x => x.Title, new { @class = "form-control" })
+            @Html.ValidationMessageFor(x => x.Title)
+            <br />
+
+            @Html.Label("Blog içeriği")
+            @Html.TextAreaFor(x => x.Content, 10, 3, new { @class = "form-control" })
+            @Html.ValidationMessageFor(x => x.Content)
+            <br />
+
+            @Html.Label("Blog resim linki (opsiyonel)")
+            @Html.TextBoxFor(x => x.ImageLink, new { @class = "form-control" })
+            <br />
+
+            @Html.Label("Kategori seçiniz")
+            @Html.DropDownListFor(x => x.CategoryId, (List<SelectListItem>)ViewBag.cv, new { @class = "form-control" })
+            <hr />
+            <button type="submit" class="btn btn-primary mx-auto">Post</button>
+        </div>
+    </div>
+}
+
+
