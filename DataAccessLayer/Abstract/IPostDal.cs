@@ -10,6 +10,6 @@ namespace DataAccessLayer.Abstract
    public interface IPostDal:IGenericDal<Post>
     {
         List<Post> GetPostListWithUser();
-        List<Post> GetPostListByUserId(int id);
+        List<Post> GetPostListByUserId(int id);       
     }
 }

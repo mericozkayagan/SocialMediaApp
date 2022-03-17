@@ -38,6 +38,11 @@ namespace BusinessLayer.Concrete
             return _postDal.GetListAll();
         }
 
+        public List<Post> GetMostLikedThreePost()
+        {           
+            return _postDal.GetListAll().OrderByDescending(x => x.LikeCount).Take(3).ToList();
+        }
+
         public List<Post> GetPostListByUserId(int id)
         {
             return _postDal.GetPostListByUserId(id);

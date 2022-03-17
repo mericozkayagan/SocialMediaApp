@@ -31,7 +31,7 @@ namespace SocialMediaApp.Controllers
                                                       Value = x.CategoryId.ToString(),
                                                   }).ToList();
             ViewBag.cv = categoryvalue;
-            return View();            
+            return View();
         }
         [HttpPost]
         public IActionResult CreatePost(Post p)
@@ -55,14 +55,13 @@ namespace SocialMediaApp.Controllers
                     ModelState.AddModelError(item.PropertyName, item.ErrorMessage);
                 }
             }
-            return RedirectToAction("Index","Home");
-            
-        }
-        public IActionResult LikePost(int id)
-        {
-            var post = pm.GetById(id);            
-            pm.Update(post);
             return RedirectToAction("Index", "Home");
+
+        }
+        public IActionResult GetPostDetails(int id)
+        {
+            var post = pm.GetById(id);
+            return View(post);
         }
     }
 }

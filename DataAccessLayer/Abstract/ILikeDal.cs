@@ -8,6 +8,6 @@ using System.Threading.Tasks;
 namespace DataAccessLayer.Abstract
 {
     public interface ILikeDal:IGenericDal<Like>
-    {
+    {        
     }
 }

@@ -29,6 +29,7 @@
             </div>
         </div>
         @*Burası view component olacak foreach ile En çok ilgi çeken 3 post*@
+        @await Component.InvokeAsync("GetTopLiked3Post")
         <div class="card my-1" style="width: 20rem;">
             <div class="card-body">
                 <h5 class="card-title">Çok like alan post</h5>

@@ -11,5 +11,7 @@ namespace BusinessLayer.Abstract
     {
         List<Post> GetPostListWithUser();
         List<Post> GetPostListByUserId(int id);
+        List<Post> GetMostLikedThreePost();
+        
     }
 }

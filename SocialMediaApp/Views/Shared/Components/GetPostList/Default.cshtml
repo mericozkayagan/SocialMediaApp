@@ -6,14 +6,34 @@
     <div class="card my-3">
         <div class="card-body">
             <h5 class="card-title"><img src="@item.User.ThumbnailImageLink" alt="" class="img-thumbnail rounded-circle" /> &nbsp; @item.User.Name @item.User.Surname</h5>
-            <h5 class="card-title">@item.Category.CategoryName - @item.Title</h5>
+            <h5 class="card-title">#@item.Category.CategoryName - @item.Title</h5>
             <p class="card-text">@item.Content</p>
             <p class="card-text"><small class="text-muted">Last updated @(((DateTime)item.LastUpdatedDate).ToString("M"))</small></p>
         </div>
         <img src="@item.ImageLink" class="card-img-bottom rounded-10 px-4 py-4 " alt="...">
         <ul class="list-inline">
-            <li class="list-inline-item ml-4"><a href="/Post/LikePost/@item.PostId" class="btn btn-primary ">Beğen</a></li>
+            <li class="list-inline-item ml-4"><button id="btnLike" class="btn btn-primary ">Beğen</button></li>
             <li class="list-inline-item mx-auto"><a href="#" class="btn btn-primary ">Yorum yap</a></li>
         </ul>
+        <label hidden id="PostId">@item.PostId</label>
+        <label hidden id="UserId">1</label>
     </div>
 }
+<script src="~/purple/assets/vendors/js/vendor.bundle.base.js"></script>
+<script src="~/purple/assets/js/off-canvas.js"></script>
+<script src="~/purple/assets/js/hoverable-collapse.js"></script>
+<script src="~/purple/assets/js/misc.js"></script>
+<script type="text/javascript">
+    $("#btnLike").click(function () {
+        var idPost = document.getElementById("PostId").textContent;
+        $.ajax({
+            type: "post",
+            url: "/Like/LikePost/" + idPost,
+            
+            success: function (func) {
+                alert("postu beğendiniz");
+            }
+        });
+    });
+</script>
+

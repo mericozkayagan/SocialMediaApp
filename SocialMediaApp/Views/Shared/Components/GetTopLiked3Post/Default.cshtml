@@ -1,0 +1,12 @@
+﻿@using EntityLayer.Concrete
+@model List<Post>
+@foreach (var item in Model)
+{
+    <div class="card my-1" style="width: 20rem;">
+        <div class="card-body">
+            <h5 class="card-title">@item.Title</h5>
+            <p class="card-text">@item.Content.Substring(0, item.Content.Substring(0, 50).LastIndexOf(" ")).</p>
+            <a href="#" class="btn btn-primary btn-sm">Posta git</a>
+        </div>
+    </div>
+}

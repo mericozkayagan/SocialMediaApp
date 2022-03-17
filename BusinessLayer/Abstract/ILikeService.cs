@@ -8,6 +8,6 @@ using System.Threading.Tasks;
 namespace BusinessLayer.Abstract
 {
     public interface ILikeService: IGenericService<Like>
-    {
+    {        
     }
 }
