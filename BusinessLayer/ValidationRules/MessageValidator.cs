@@ -16,6 +16,7 @@ namespace BusinessLayer.ValidationRules
             RuleFor(x => x.Sender).NotEmpty().MinimumLength(3);
             RuleFor(x => x.MessageDetails).NotEmpty().MinimumLength(3);
             RuleFor(x => x.MessageDate).NotEmpty();
+            RuleFor(x => x.Title).NotEmpty().MinimumLength(2);
         }
     }
 }

@@ -27,6 +27,13 @@ namespace BusinessLayer.ValidationRules
                     .Matches(@"[a-z]+").WithMessage("Şifreniz en az bir küçük harf içermeli.");
 
             RuleFor(x => x.UserStatus).NotNull();
+
+            RuleFor(x => x.CreatedDate).NotNull();
+
+            RuleFor(x => x.Description).NotNull().WithMessage("Lütfen açıklamanızı giriniz")
+                   .MinimumLength(3).WithMessage("Lütfen en az 3 harf giriniz")
+                   .MaximumLength(500).WithMessage("Lütfen en fazla 500 karakter giriniz");
+                    
         }
     }
 }

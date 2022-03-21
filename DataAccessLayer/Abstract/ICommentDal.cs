@@ -9,5 +9,7 @@ namespace DataAccessLayer.Abstract
 {
     public interface ICommentDal:IGenericDal<Comment>
     {
+        List<Comment> GetCommentListWithUser();
+        List<Comment> GetCommentListWithUserByPostId(int id);
     }
 }

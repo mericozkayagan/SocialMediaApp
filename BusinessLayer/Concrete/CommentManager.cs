@@ -37,6 +37,16 @@ namespace BusinessLayer.Concrete
             return _commentDal.GetListAll().Where(x => x.PostId == id).ToList();
         }
 
+        public List<Comment> GetCommentListWithUser()
+        {
+            return _commentDal.GetCommentListWithUser();
+        }
+
+        public List<Comment> GetCommentListWithUserByPostId(int id)
+        {
+            return _commentDal.GetCommentListWithUserByPostId(id);
+        }
+
         public List<Comment> GetList()
         {
             return _commentDal.GetListAll();

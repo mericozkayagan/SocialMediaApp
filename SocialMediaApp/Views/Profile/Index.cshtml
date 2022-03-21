@@ -1,0 +1,51 @@
+﻿@model EntityLayer.Concrete.User
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+<div class="row">
+    <div class="col sm-4">
+        <div class="card" style="width: 30rem;">
+            <div class="card-body">
+                <h5 class="card-title"><img src="@Model.ThumbnailImageLink" alt="" class="img-thumbnail rounded-circle" /> &nbsp; @Model.Name @Model.Surname</h5>
+            </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">Email: @Model.Email</li>
+                <li class="list-group-item">Kullanıcı adı: @Model.Username</li>
+                <li class="list-group-item">Şifreniz: @Model.Password</li>
+            </ul>            
+        </div>
+
+    </div>
+    <div class="col sm-8 mr-5">
+        <div class="card w-100">
+            <div class="card-body">
+                <h5 class="card-title">Email Değiştirme</h5>
+                <p class="card-text">Yeni Emailinizi giriniz:</p>
+                @Html.TextBoxFor(x=>x.Email,new { @class="form-control"})
+                <br />
+                <a href="/Profile/ChangeEmail/@Model.UserId" class="btn btn-primary">Güncelle</a>
+            </div>
+        </div>
+        <div class="card w-100">
+            <div class="card-body">
+                <h5 class="card-title">Kullanıcı Adı Değiştirme</h5>
+                <p class="card-text">Yeni Kullanıcı adınızı giriniz:</p>
+                @Html.TextBoxFor(x=>x.Username,new { @class="form-control"})
+                <br />
+                <a href="/Profile/ChangeUsername/@Model.UserId" class="btn btn-primary">Güncelle</a>
+            </div>
+        </div>
+        <div class="card w-100">
+            <div class="card-body">
+                <h5 class="card-title">Şifreyi Değiştirme</h5>
+                <p class="card-text">Yeni Şifrenizi giriniz:</p>
+                @Html.TextBoxFor(x=>x.Password,new { @class="form-control"})
+                <br />
+                <a href="/Profile/ChangePassword/@Model.UserId" class="btn btn-primary">Güncelle</a>
+            </div>
+        </div>
+
+    </div>
+</div>
+

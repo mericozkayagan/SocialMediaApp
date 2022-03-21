@@ -16,7 +16,9 @@ namespace EntityLayer.Concrete
         public string Email { get; set; }
         public string Password { get; set; }
         public string Username { get; set; }
-        public string ThumbnailImageLink { get; set; }
+        public string? Description { get; set; }
+        public string? ThumbnailImageLink { get; set; }
         public bool UserStatus { get; set; }
+        public DateTime CreatedDate { get; set; }
     }
 }

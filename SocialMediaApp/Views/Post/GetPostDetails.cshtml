@@ -1,0 +1,20 @@
+﻿@model EntityLayer.Concrete.Post
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+
+<div class="card mb-3">
+    <div class="card-body">
+        <h5 class="card-title"><img src="@Model.User.ThumbnailImageLink" alt="" class="img-thumbnail rounded-circle" /> &nbsp; @Model.User.Name @Model.User.Surname</h5>
+        <h5 class="card-title">#@Model.Category.CategoryName - @Model.Title</h5>
+        <p class="card-text">@Model.Content</p>
+        <p class="card-text"><small class="text-muted">Last updated @(((DateTime)Model.LastUpdatedDate).ToString("M"))</small></p>
+    </div>
+    <img src="@Model.ImageLink" class="card-img-bottom rounded-10 px-4 py-4 " alt="...">
+    
+    <label hidden id="PostId">@Model.PostId</label>
+</div>
+@await Component.InvokeAsync("NewComment",Model.PostId)
+
+@await Component.InvokeAsync("CommentListPost",Model.PostId)

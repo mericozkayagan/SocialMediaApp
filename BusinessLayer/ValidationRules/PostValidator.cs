@@ -12,7 +12,7 @@ namespace BusinessLayer.ValidationRules
     {
         public PostValidator()
         {
-            RuleFor(x => x.CategoryId).GreaterThan(0).WithMessage("Bir kategori giriniz");
+            RuleFor(x => x.CategoryId).GreaterThan(0);
 
             RuleFor(x => x.Content).NotEmpty().WithMessage("Bir içerik giriniz.")
                 .MinimumLength(2).WithMessage("En az iki karakter giriniz.")

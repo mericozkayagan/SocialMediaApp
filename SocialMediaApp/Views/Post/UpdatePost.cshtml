@@ -1,0 +1,33 @@
+﻿@model EntityLayer.Concrete.Post
+@{
+    ViewData["Title"] = "UpdatePost";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+
+@using (Html.BeginForm("UpdatePost", "Post", FormMethod.Post))
+{
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">Post Güncelle</h5>
+            <p class="card-text">Başlık:</p>
+            @Html.TextBoxFor(x => x.Title, new { @class = "form-control" })
+            @Html.ValidationMessageFor(x => x.Title)
+            <br />
+            <p class="card-text">Görsel Linki:</p>
+            @Html.TextBoxFor(x => x.ImageLink, new { @class = "form-control" })
+            @Html.ValidationMessageFor(x => x.ImageLink)
+            <br />
+            <p class="card-text">Kategori:</p>
+            @Html.DropDownListFor(x => x.CategoryId, (List<SelectListItem>)ViewBag.c, new { @class = "form-control" })
+            <br />
+            <p class="card-text">İçerik:</p>
+            @Html.TextAreaFor(x => x.Content, 10, 3, new { @class = "form-control" })
+            @Html.ValidationMessageFor(x => x.Content)
+            <br />
+            @Html.HiddenFor(x=>x.PostId)
+            <button type="submit" class="btn btn-primary">Güncelle</button>
+        </div>
+    </div>
+}
+
+

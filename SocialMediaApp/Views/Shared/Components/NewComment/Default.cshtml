@@ -1,0 +1,14 @@
+﻿@model EntityLayer.Concrete.Comment
+@using (Html.BeginForm("AddComment", "Comment", FormMethod.Post))
+{
+    <div class="card">
+        
+        <div class="card-body">
+            <h5 class="card-title">Yorum ekleyin</h5>
+            <input class="card-text form-control" asp-for="CommentContent" />
+            <label hidden class="card-text" asp-for="PostId">@Model.PostId</label>
+            <br />
+            <button type="submit" class="btn btn-primary">Gönder</button>
+        </div>
+    </div>
+}

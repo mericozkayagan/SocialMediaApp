@@ -23,5 +23,10 @@ namespace DataAccessLayer.EntityFramework
             using var c = new Context();
             return c.Posts.Include(x => x.User).Where(x=>x.UserId==id).ToList();
         }        
+        public Post GetById(int id)
+        {
+            using var c = new Context();
+            return c.Posts.Include(x => x.User).Include(x => x.Category).Where(x => x.PostId == id).Single();
+        }
     }
 }

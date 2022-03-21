@@ -20,22 +20,22 @@ namespace BusinessLayer.Concrete
 
         public void Add(Message t)
         {
-            throw new NotImplementedException();
+            _messageDal.Insert(t);
         }
 
         public void Delete(Message t)
         {
-            throw new NotImplementedException();
+            _messageDal.Delete(t);
         }
 
         public Message GetById(int id)
         {
-            throw new NotImplementedException();
+            return _messageDal.GetById(id);
         }        
 
         public List<Message> GetList()
         {
-            throw new NotImplementedException();
+            return _messageDal.GetListAll();
         }
 
         public List<Message> GetListInbox(string p)
@@ -50,7 +50,7 @@ namespace BusinessLayer.Concrete
 
         public void Update(Message t)
         {
-            throw new NotImplementedException();
+            _messageDal.Update(t);
         }
     }
 }

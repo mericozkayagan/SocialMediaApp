@@ -12,10 +12,13 @@ namespace SocialMediaApp.Controllers
     public class LikeController : Controller
     {
         LikeManager lm = new LikeManager(new EfLikeDal());
+        UserManager um = new UserManager(new EfUserDal());
         [HttpPost]
         public PartialViewResult LikePost(int id)
-        {            
-            var like = new Like() { PostId = id, UserId = 1 };
+        {
+            var user = User.Identity.Name;
+            var loggedUser = um.GetList().Where(x => x.Email == user).Single();
+            var like = new Like() { PostId = id, UserId = loggedUser.UserId };
             lm.Add(like);
             return PartialView();
         }

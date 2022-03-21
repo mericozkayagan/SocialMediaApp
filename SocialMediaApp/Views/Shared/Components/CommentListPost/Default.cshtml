@@ -1,0 +1,12 @@
+﻿@using EntityLayer.Concrete
+@model List<Comment>
+@foreach (var item in Model)
+{
+    <div class="card mt-3">
+        <div class="card-body">
+            <h5 class="card-title"><img src="@item.User.ThumbnailImageLink" alt="" class="img-thumbnail rounded-circle" /> &nbsp; @item.User.Name @item.User.Surname</h5>            
+            <p class="card-text">@item.CommentContent</p>
+            <p class="card-text"><small class="text-muted">Last updated @(((DateTime)item.CommentDate).ToString("M"))</small></p>
+        </div>                 
+    </div>
+}
