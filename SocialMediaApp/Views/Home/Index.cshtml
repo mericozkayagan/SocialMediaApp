@@ -4,39 +4,40 @@
     Layout = "~/Views/Shared/_UserLayout.cshtml";
 }
 
-<div class="row">
-    <div class="col-sm-8">
-        <div class="card">            
-            <div class="card-body">
-                <blockquote class="blockquote mb-0">
-                    <p>A well-known quote, contained in a blockquote element.</p>
-                    <footer class="blockquote-footer">Someone famous in <cite title="Source Title">Source Title</cite></footer>
-                </blockquote>
+    <div class="row">
+        <div class="col-sm-8 col-md-9">
+            <div class="card">
+                <div class="card-body">
+                    <blockquote class="blockquote mb-0">
+                        <p>A well-known quote, contained in a blockquote element.</p>
+                        <footer class="blockquote-footer">Someone famous in <cite title="Source Title">Source Title</cite></footer>
+                    </blockquote>
+                </div>
+            </div>
+
+            @*Burası viev component olacak foreach ile Bütün Postlar*@
+            @await Component.InvokeAsync("GetPostList")
+
+        </div>
+        <div class="col-sm-4 col-md-3">
+            @*Burası viev component olacak Kategoriler*@
+            @await Component.InvokeAsync("GetCategoryList")
+
+            <div class="card mt-3" style="width: 20rem;">
+                <div class="card-header">
+                    En çok beğenilen postlar
+                </div>
+            </div>
+            @*Burası view component olacak foreach ile En çok ilgi çeken 3 post*@
+            @await Component.InvokeAsync("GetTopLiked3Post")
+            <div class="card my-1" style="width: 20rem;">
+                <div class="card-body">
+                    <h5 class="card-title">Çok like alan post</h5>
+                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                    <a href="#" class="btn btn-primary btn-sm">Posta git</a>
+                </div>
             </div>
         </div>
-
-        @*Burası viev component olacak foreach ile Bütün Postlar*@
-        @await Component.InvokeAsync("GetPostList")        
-
     </div>
-    <div class="col-sm-4">
-        @*Burası viev component olacak Kategoriler*@
-        @await Component.InvokeAsync("GetCategoryList")
 
-        <div class="card mt-3" style="width: 20rem;">
-            <div class="card-header">
-                En çok beğenilen postlar
-            </div>
-        </div>
-        @*Burası view component olacak foreach ile En çok ilgi çeken 3 post*@
-        @await Component.InvokeAsync("GetTopLiked3Post")
-        <div class="card my-1" style="width: 20rem;">
-            <div class="card-body">
-                <h5 class="card-title">Çok like alan post</h5>
-                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                <a href="#" class="btn btn-primary btn-sm">Posta git</a>
-            </div>
-        </div>
-    </div>
-</div>
 

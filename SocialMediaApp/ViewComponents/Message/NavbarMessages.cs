@@ -16,8 +16,8 @@ namespace SocialMediaApp.ViewComponents.Message
         {
               
                         
-            var user = User.Identity.Name;            
-            var messages = mm.GetListInbox(user);
+            var user = User.Identity.Name;
+            var messages = mm.GetListInbox(user).Where(x=>x.MessageStatus==false).Take(5).ToList();
 
             var count = mm.GetListInbox(user).Where(x => x.MessageStatus == false).Count();
             TempData["count"] = count;

@@ -1,0 +1,30 @@
+﻿@using EntityLayer.Concrete
+@model List<Notification>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_UserLayout.cshtml";
+}
+
+<div class="card col-12">    
+    <div class="card-body">
+        <h4>Tüm Bildirimler</h4>
+        <table class="table">
+            <tr>
+                <th>#</th>
+                <th>Bildirim tipi</th>
+                <th>Açıklama</th>
+                <th>Tarih</th>
+            </tr>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.NotificationId</td>
+                    <td>@item.NotificationType</td>
+                    <td>@item.NotificationDetails</td>
+                    <td>@item.NotificationDate.ToShortDateString()</td>
+                </tr>
+            }
+        </table>
+    </div>
+</div>
+
