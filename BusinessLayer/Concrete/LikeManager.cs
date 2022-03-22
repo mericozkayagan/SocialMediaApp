@@ -35,7 +35,7 @@ namespace BusinessLayer.Concrete
 
         public List<Like> GetList()
         {
-            throw new NotImplementedException();
+            return _likeDal.GetListAll();
         }
 
         public void Update(Like t)

@@ -1,0 +1,57 @@
+﻿@model EntityLayer.Concrete.Notification
+<div class="col-lg-6 mb-3">
+    <div class="card">
+        <div class="card-header">
+            <h3>Yeni bildirim ekle</h3>
+        </div>
+        <div class="card-body">
+
+            @using (Html.BeginForm("AddNotification", "Notification", FormMethod.Post))
+            {
+                @Html.Label("Bildirim başlığı")
+                @Html.TextBoxFor(x => x.NotificationType, new { @class = "form-control" })
+                @Html.ValidationMessageFor(x => x.NotificationType)
+                <br />
+                @Html.Label("Bildirim içeriği")
+                @Html.TextBoxFor(x => x.NotificationDetails, new { @class = "form-control" })
+                @Html.ValidationMessageFor(x => x.NotificationDetails)
+                <br />
+                @Html.DropDownListFor(x=>x.NotificationTypeSymbol,
+                 new List<SelectListItem> {
+                     new SelectListItem {
+                        Text="Takvim",
+                        Value="mdi mdi-calendar"
+                     },
+                     new SelectListItem {
+                        Text="Ayarlar",
+                        Value="mdi mdi-settings"
+                     },
+                     new SelectListItem {
+                        Text="Link",
+                        Value="mdi mdi-link-invariant"
+                     },
+                 }, "Bildirim içeriği seçiniz", new { @class = "form-control", @name = "NotificationTypeSymbol" })
+                <br />
+                @Html.DropDownListFor(x=>x.NotificationColor,
+                 new List<SelectListItem> {
+                     new SelectListItem {
+                        Text="Kırmızı",
+                        Value="preview-icon bg-danger"
+                     },
+                     new SelectListItem {
+                        Text="Sarı",
+                        Value="preview-icon bg-warning"
+                     },
+                     new SelectListItem {
+                        Text="Yeşil",
+                        Value="preview-icon bg-success"
+                     },
+                 }, "Bildirim rengi seçiniz", new { @class = "form-control", @name = "NotificationColor" })
+                <br />
+                <a href="AdminNotification/Index" class="btn btn-outline-info float-right mx-1">Tüm bildirimleri görüntüle</a>
+                <button class="btn btn-info float-right">Ekle</button>
+            }
+
+        </div>
+    </div>
+</div>

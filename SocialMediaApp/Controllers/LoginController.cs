@@ -26,7 +26,7 @@ namespace SocialMediaApp.Controllers
             Context c = new Context();
             var datavalue = c.Users.FirstOrDefault(x => x.Email == p.Email && x.Password == p.Password);
             if (datavalue != null)
-            {
+            {                
                 var claims = new List<Claim>
                 {
                     new Claim(ClaimTypes.Name,p.Email)
@@ -47,6 +47,35 @@ namespace SocialMediaApp.Controllers
             await HttpContext.SignOutAsync();
             HttpContext.Session.Clear();
             return RedirectToAction("Index", "Login");
+        }
+
+        [HttpGet]
+        public IActionResult AdminLogin()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> AdminLogin(Admin p)
+        {
+            Context c = new Context();
+            var datavalue = c.Admins.FirstOrDefault(x => x.Email == p.Email && x.Password == p.Password);
+            if (datavalue != null)
+            {
+                var claims = new List<Claim>
+                {
+                    new Claim(ClaimTypes.Name,p.Email)
+                };
+                var useridentity = new ClaimsIdentity(claims, "a");
+                ClaimsPrincipal principal = new ClaimsPrincipal(useridentity);
+                await HttpContext.SignInAsync(principal);
+                return RedirectToAction("Index", "Dashboard");
+            }
+            else
+            {
+                return View();
+            }
+
         }
     }
 }

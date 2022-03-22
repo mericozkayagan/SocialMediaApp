@@ -15,6 +15,7 @@ namespace SocialMediaApp.Controllers
     {
         CommentManager cm = new CommentManager(new EfCommentDal());
         UserManager um = new UserManager(new EfUserDal());
+        AdminManager am = new AdminManager(new EfAdminDal());
         CommentValidator validator = new CommentValidator();
         public IActionResult Index()
         {
@@ -43,8 +44,24 @@ namespace SocialMediaApp.Controllers
                     ModelState.AddModelError(item.PropertyName, item.ErrorMessage);
                 }
                 return View();
+            }            
+        }
+
+        public IActionResult DeleteComment(int id)
+        {
+            var comment = cm.GetById(id);
+            cm.Delete(comment);
+            var logged = User.Identity.Name;
+            var ifAdmin = am.GetList().Where(x => x.Email == logged).SingleOrDefault();
+            var ifUser = um.GetList().Where(x => x.Email == logged).SingleOrDefault();
+            if (ifUser is not null && ifAdmin is null)
+            {
+                return RedirectToAction("/Home/Index");
             }
-            
+            else
+            {
+                return RedirectToAction("/Dashboard/Index");
+            }
         }
     }
 }

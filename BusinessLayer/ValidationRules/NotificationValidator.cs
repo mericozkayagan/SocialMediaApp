@@ -14,8 +14,13 @@ namespace BusinessLayer.ValidationRules
         {
             RuleFor(x => x.NotificationColor).NotEmpty();
             RuleFor(x => x.NotificationDate).NotEmpty();
-            RuleFor(x => x.NotificationDetails).NotEmpty().MinimumLength(2);
-            RuleFor(x => x.NotificationType).NotEmpty().MinimumLength(2);
+
+            RuleFor(x => x.NotificationDetails)
+                .NotEmpty().WithMessage("Açıklama kısmı boş olamaz")
+                .MinimumLength(2).WithMessage("Lütfen daha uzun bir açıklama giriniz");
+            RuleFor(x => x.NotificationType)
+                .NotEmpty().WithMessage("Başlık kısmı boş olamaz")
+                .MinimumLength(2).WithMessage("Lütfen daha uzun bir başlık giriniz");
             RuleFor(x => x.NotificationStatus).NotEmpty();
         }
     }

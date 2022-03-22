@@ -1,0 +1,40 @@
+﻿@using EntityLayer.Concrete
+@model List<Comment>
+<div class="col-lg-8">
+    <div class="ibox ">
+        <div class="ibox-title">
+            <h5>Kullanıcı yorumları</h5>            
+        </div>
+        <div class="ibox-content">
+
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Kullanıcı adı</th>
+                        <th>Yorumu</th>
+                        <th>Tarih</th>
+                        <th>Sil</th>                        
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.CommentId</td>
+                            <td>@item.User.Username</td>
+                            <td>@item.CommentContent</td>
+                            <td>@item.CommentDate.ToString("g")</td>
+                            <td><a href="Comment/DeleteComment/@item.CommentId" class="btn btn-danger">Sil</a></td>
+                        </tr>
+                    }
+
+
+
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+
+</div>
